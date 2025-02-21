@@ -1,0 +1,11 @@
+Package: neugene
+Title: GLM GWAS with PCA Correction
+Version: 0.0.0.9001
+Authors@R: 
+    person("Bipin", "Neupane", email = "neupanebpn63@gmail.com", role = c("aut", "cre"))
+Description: This package provides a step-by-step tutorial on performing Genome-Wide Association Studies (GWAS) using General Linear Models (GLM) with and without Principal Component Analysis (PCA) correction. We compare our method against GWASbyCor, Blink C, and Machine Learning model using simulations and evaluate performance using ROC curves.
+License: MIT
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+
