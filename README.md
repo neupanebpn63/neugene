@@ -197,7 +197,7 @@ If you use `neugene` in your research, please cite the software repository and t
 
 **GitHub:** https://github.com/neupanebpn63/neugene
 
-**Zenodo DOI:** To be added after archival.
+**Zenodo DOI:** https://doi.org/10.5281/zenodo.24374649
 
 A permanent, version-specific DOI will be provided through Zenodo to preserve the software version associated with research applications.
 
