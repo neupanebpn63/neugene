@@ -1,3 +1,4 @@
+
 #' Run GWAS with GLM and Enhanced Visualization
 #'
 #' @description Performs GWAS using linear regression with improved visualization
@@ -8,8 +9,6 @@
 #' @return List containing results and plots
 #' @export
 run_gwas_glm <- function(y, X, C, snp_info) {
-  library(qqman)
-  library(ggplot2)
 
   # Data preparation
   y_vec <- as.numeric(y[, 2])
@@ -18,7 +17,7 @@ run_gwas_glm <- function(y, X, C, snp_info) {
 
   # GWAS analysis
   p_values <- sapply(1:ncol(SNPs), function(i) {
-    model <- lm(y_vec ~ SNPs[, i] + Covs)
+    model <- stats::lm(y_vec ~ SNPs[, i] + Covs)
     summary(model)$coefficients[2, 4]
   })
 
@@ -28,26 +27,26 @@ run_gwas_glm <- function(y, X, C, snp_info) {
 
   # Enhanced Manhattan plot
   manhattan_plot <- function() {
-    manhattan(results,
-              chr = "Chromosome",
-              bp = "Position",
-              p = "P",
-              snp = "SNP",
-              col = c("#377eb8", "#4daf4a"),
-              genomewideline = -log10(5e-8),
-              suggestiveline = -log10(1e-5),
-              main = "Manhattan Plot (GLM)",
-              cex = 0.8,
-              cex.axis = 0.9)
+    qqman::manhattan(results,
+                     chr = "Chromosome",
+                     bp = "Position",
+                     p = "P",
+                     snp = "SNP",
+                     col = c("#377eb8", "#4daf4a"),
+                     genomewideline = -log10(5e-8),
+                     suggestiveline = -log10(1e-5),
+                     main = "Manhattan Plot (GLM)",
+                     cex = 0.8,
+                     cex.axis = 0.9)
   }
 
   # Enhanced QQ plot
   qq_plot <- function() {
-    qq(results$P,
-       main = "QQ Plot (GLM)",
-       col = "#984ea3",
-       cex = 0.8)
-    abline(0, 1, col = "#ff7f00", lwd = 2)
+    qqman::qq(results$P,
+              main = "QQ Plot (GLM)",
+              col = "#984ea3",
+              cex = 0.8)
+    graphics::abline(0, 1, col = "#ff7f00", lwd = 2)
   }
 
   list(results = results,
